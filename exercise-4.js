@@ -58,24 +58,16 @@ function fetchJobById(id) {
       }
 
       return reject(`Person with job title id ${id} doesn't exist`);
-    }, 2000);
+    }, 1000);
   });
 }
 
 
 let personId = fetchPersonById(3);
 let personJob = fetchJobById(3);
-personId
-.then((person) => {
-  console.log(person)
-})
-.catch((err) => {
-  console.log(`è stato provocato un errore:`, err)
-})
-
-personJob
-.then((job) => {
-  console.log(job)
+Promise.all([personId, personJob])
+.then((id) => {
+  console.log(id)
 })
 .catch((err) => {
   console.log(`è stato provocato un errore:`, err)
